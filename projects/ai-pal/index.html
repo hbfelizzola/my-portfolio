@@ -135,11 +135,13 @@ footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
   <section id="how">
     <h2>How I built it</h2>
     <div>
-      <p>I started from questions rather than code. Each open question (where to read usage from, when a nudge should fire, what to show when a figure is stale) became a GitHub issue, answered by research notes or a throwaway prototype in the app. The answers became a written spec and eleven implementation tickets.</p>
-      <p>The mod is TypeScript on Claude Code's function-hooks API. It reads the session's own usage figures and polls the plan's usage endpoint, with back-off and a fallback when the endpoint refuses. It keeps a shared log, so every open session shows the same numbers. The ring, speedometer and band are drawn as SVG on the desktop and as text in the terminal.</p>
-      <p>I built it test-first through a single seam, the mod's edge with the Claude Code engine. Its 70 tests feed in engine events and fake replies, and check only what you'd see: what's drawn, which notifications are booked, and what's stored.</p>
+      <p>TypeScript and TSX on Claude Code's mod API (function hooks), with no other dependencies.</p>
+      <p>Usage comes from the session's own figures and from the plan's usage endpoint on api.anthropic.com, polled every 5 minutes with back-off.</p>
+      <p>A shared store keeps one log for every open session. Nudges are native notifications, scheduled through the desktop app.</p>
+      <p>The ring, speedometer and band are SVG generated in code on the desktop and plain text in the terminal.</p>
+      <p>Built test-first: 70 tests on Claude Code's plugin test kit, run against both surfaces.</p>
       <ul class="tags" aria-label="Tech">
-        <li>TypeScript</li><li>Claude Code mods</li><li>SVG</li><li>Test-driven</li><li>Spec-driven</li>
+        <li>TypeScript</li><li>TSX</li><li>Claude Code mods</li><li>SVG</li><li>REST + OAuth</li><li>TDD</li>
       </ul>
     </div>
   </section>
