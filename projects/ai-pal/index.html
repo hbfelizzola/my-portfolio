@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ai-pal, a Claude Code mod that shows how much of your Claude plan you have left and nudges you before it resets. A personal project by Humberto Bernardes Felizzola.">
+<title>ai-pal · Humberto Bernardes Felizzola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Same look as the home page: one narrow column, sections set as label | content rows */
+:root {
+  --bg: #f6f7f9;
+  --fg: #16202b;
+  --muted: #5d6875;
+  --line: #dde1e6;
+  --accent: #1f5f8b;
+  --shot: #1c1c1e;
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11161c; --fg: #e8ecf0; --muted: #98a3af; --line: #26303a; --accent: #7cb8e0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11161c; --fg: #e8ecf0; --muted: #98a3af; --line: #26303a; --accent: #7cb8e0;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding: 0 16px;
+}
+.wrap { max-width: 680px; margin: 0 auto; padding-block: 56px 56px; display: grid; gap: 48px; }
+a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.back { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.back a { color: var(--muted); }
+header { display: grid; gap: 14px; }
+.where { font-family: var(--font-mono); font-size: 13px; color: var(--muted); letter-spacing: .02em; }
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(40px, 8vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.lede { font-size: 20px; margin: 0; max-width: 34em; }
+
+.hero { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+.hero img { width: 240px; height: auto; border-radius: 12px; display: block; }
+.hero ul { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 8px; }
+.hero ul b { color: var(--fg); font-weight: 700; }
+.wide { width: 100%; height: auto; border-radius: 10px; display: block; }
+
+section { display: grid; grid-template-columns: 120px 1fr; gap: 8px 24px; border-top: 1px solid var(--line); padding-top: 20px; }
+section > * { min-width: 0; }
+h2 { font-family: var(--font-mono); font-weight: 400; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 4px 0 0; }
+section p { margin: 0 0 12px; }
+section p:last-child { margin-bottom: 0; }
+section ul { margin: 0 0 12px; padding-left: 18px; display: grid; gap: 6px; }
+figure { margin: 4px 0 16px; }
+figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+code, pre { font-family: var(--font-mono); font-size: 14px; }
+pre { background: var(--shot); color: #e5e5e7; padding: 14px 16px; border-radius: 10px; overflow-x: auto; margin: 0 0 12px; white-space: pre-wrap; }
+.tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags li { font-family: var(--font-mono); font-size: 13px; border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; color: var(--muted); }
+.links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 24px; }
+
+footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+@media (max-width: 560px) {
+  .wrap { padding-block: 40px 40px; gap: 40px; }
+  section { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; justify-items: center; }
+  .lede { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="back"><a href="../../">← Humberto Bernardes Felizzola</a></div>
+
+  <header>
+    <div class="where">Personal project · 2026 · Claude Code mod</div>
+    <h1>ai-pal</h1>
+    <p class="lede">A Claude Code mod that shows how much of your Claude plan you have left, and nudges you before a reset throws it away.</p>
+  </header>
+
+  <div class="hero">
+    <img src="pane.png" width="320" height="524" alt="The ai-pal Pane: a split ring with 62% of the 5-hour window and 47% of the weekly window left, a row for the Fable model, and a speedometer reading 18%/h, Use more">
+    <ul>
+      <li><b>Where you stand</b>: the share of each usage window left and the time to its reset, always beside your session.</li>
+      <li><b>Whether your pace fits</b>: Use more, On track or Ease off, from how fast you actually spend while you work.</li>
+      <li><b>A nudge after you leave</b>: a notification shortly before a reset, only while there's allowance worth coming back for.</li>
+    </ul>
+  </div>
+
+  <section id="why">
+    <h2>Why</h2>
+    <div>
+      <p>A Claude plan meters usage in windows: one that resets every 5 hours, one weekly, and sometimes a weekly one per model. Whatever is left at a reset is lost. Claude warns you when you're close to a limit, but nothing told me when allowance I'd already paid for was about to go unused, or whether my pace would spend it. I found out afterwards, or never.</p>
+    </div>
+  </section>
+
+  <section id="what">
+    <h2>What it does</h2>
+    <div>
+      <p>A pane docked beside each Claude Code session holds a split ring. The 5-hour window gets the larger arc because it moves fastest. Under it, a speedometer shows the 5-hour burn rate: percent of the window spent per hour you actually spend working with Claude.</p>
+      <p>A band above the prompt keeps the same figures where you type: each window's allowance left, over a speed bar with the rate and the call.</p>
+      <figure>
+        <img class="wide" src="band.png" width="908" height="92" alt="The band above the prompt: 5-hour 62%, 3h 0m, 18%/h, Use more; Weekly 47%, Sun 01:00, 12%/day, On track">
+        <figcaption>The band above the prompt. Hovering a speed bar gives the reason behind the call.</figcaption>
+      </figure>
+      <p>When you've stepped away and a window still has enough left, a native notification arrives shortly before its reset. It says how much is left, how old the figure is, and whether coming back is worth it:</p>
+      <pre>5-hour: 62% left as of 14:00, resets in 1h. Even nonstop, ~44% would go unused. Try a bigger model.</pre>
+      <p>Nudges respect quiet hours, merge when two windows reset close together, and update themselves on every new reading. A single slash command, <code>/ai-pal</code>, shows and changes the thresholds and quiet hours.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>How I built it</h2>
+    <div>
+      <p>I started from questions rather than code. Each open question (where to read usage from, when a nudge should fire, what to show when a figure is stale) became a GitHub issue, answered by research notes or a throwaway prototype in the app. The answers became a written spec and eleven implementation tickets.</p>
+      <p>The mod is TypeScript on Claude Code's function-hooks API. It reads the session's own usage figures and polls the plan's usage endpoint, with back-off and a fallback when the endpoint refuses. It keeps a shared log, so every open session shows the same numbers. The ring, speedometer and band are drawn as SVG on the desktop and as text in the terminal.</p>
+      <p>I built it test-first through a single seam, the mod's edge with the Claude Code engine. Its 70 tests feed in engine events and fake replies, and check only what you'd see: what's drawn, which notifications are booked, and what's stored.</p>
+      <ul class="tags" aria-label="Tech">
+        <li>TypeScript</li><li>Claude Code mods</li><li>SVG</li><li>Test-driven</li><li>Spec-driven</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="try">
+    <h2>Try it</h2>
+    <div>
+      <p>It needs Claude Code 2.1.325 or newer and a Claude Pro or Max plan. At the prompt of a terminal session:</p>
+      <pre>/plugin install ai-pal --marketplace hbfelizzola/ai-pal</pre>
+      <ul class="links">
+        <li><a href="https://github.com/hbfelizzola/ai-pal">Source on GitHub</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>© 2026 Humberto Bernardes Felizzola · hbfelizzola.de</footer>
+</div>
+</body>
+</html>
