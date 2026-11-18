@@ -24,11 +24,15 @@ Newest first. Kind: `employment` or `freelance`. End: a month, or `current`.
 | --- | --- | --- | --- | --- | --- |
 | Clinic staff app | MERIDIAN TECHNOLOGIES INC. | Mobile app for the staff of a group of mental health clinics | Conception, development, publishing, management | | No: always "a group of mental health clinics" |
 | Clinic web platform | MERIDIAN TECHNOLOGIES INC. | Web platform for the same clinic group | Full-stack engineer | | as above |
-| ADAC Toursets (Android) | MECOMO AG | ADAC travel guide app | _?_ | | yes (on LinkedIn) |
-| ADAC Toursets (iOS) | MECOMO AG | ADAC travel guide app | _?_ | | yes (on LinkedIn) |
-| OMV Filling Station Finder (Android) | MECOMO AG | Petrol station finder for OMV | _?_ | | yes (on LinkedIn) |
+| ADAC Toursets (Android) | MECOMO AG | Tourist guide app for ADAC members: downloadable TourSets with travel information and offline maps | Developer | | yes (on LinkedIn) |
+| ADAC Toursets (iOS) | MECOMO AG | As above, for iOS | Developer | | yes (on LinkedIn) |
+| OMV Filling Station Finder (Android) | MECOMO AG | Filling station finder for the oil company OMV | Developer | | yes (on LinkedIn) |
+| OMV Filling Station Finder (iOS) | MECOMO AG | As above, for iOS | Developer | | yes (customer app) |
+| ÖAMTC City Guide | MECOMO AG | Tourist guide to Europe's main cities for the Austrian automobile club ÖAMTC | Developer | | yes (customer app) |
+| Blitzer.de (iPhone) | MECOMO AG | Speed-trap warnings while driving | Developer | | yes (customer app) |
+| Blitzer.de (Windows Phone) | MECOMO AG | As above, for Windows Phone | Developer | | yes (customer app) |
 
-More MECOMO Projects may follow from [Which other MECOMO Projects did Humberto work on?](https://github.com/hbfelizzola/my-portfolio/issues/13).
+The last four came from [Which other MECOMO Projects did Humberto work on?](https://github.com/hbfelizzola/my-portfolio/issues/13).
 
 ## Personal Projects
 
