@@ -102,7 +102,7 @@ footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
   </header>
 
   <div class="hero">
-    <img src="pane.png" width="320" height="524" alt="The ai-pal Pane: a split ring with 62% of the 5-hour window and 47% of the weekly window left, a row for the Fable model, and a speedometer reading 18%/h, Use more">
+    <img src="pane.png" width="300" height="537" alt="The top of the ai-pal Pane: a fuel gauge with 62% of the 5-hour window left and its clock at 3:00:00, over the 5-hour speedometer at 18%/h, Use more">
     <ul>
       <li><b>Where you stand</b>: the share of each usage window left and the time to its reset, always beside your session.</li>
       <li><b>Whether your pace fits</b>: Use more, On track or Ease off, from how fast you actually spend while you work.</li>
@@ -120,7 +120,7 @@ footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
   <section id="what">
     <h2>What it does</h2>
     <div>
-      <p>A pane docked beside each Claude Code session holds a split ring. The 5-hour window gets the larger arc because it moves fastest. Under it, a speedometer shows the 5-hour burn rate: percent of the window spent per hour you actually spend working with Claude.</p>
+      <p>A pane docked beside each Claude Code session holds car-style dials, a fuel gauge and a speedometer for each usage window. The fuel gauge shows how much of the window is left, from E to F, with a clock counting down to its reset. The speedometer shows the burn rate: percent of the window spent per hour you actually spend working with Claude, in three equal zones for use more, on track and ease off. A setting swaps them for needle dials.</p>
       <p>A band above the prompt keeps the same figures where you type: each window's allowance left, over a speed bar with the rate and the call.</p>
       <figure>
         <img class="wide" src="band.png" width="908" height="92" alt="The band above the prompt: 5-hour 62%, 3h 0m, 18%/h, Use more; Weekly 47%, Sun 01:00, 12%/day, On track">
@@ -138,7 +138,7 @@ footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
       <p>TypeScript and TSX on Claude Code's mod API (function hooks), with no other dependencies.</p>
       <p>Usage comes from the session's own figures and from the plan's usage endpoint on api.anthropic.com, polled every 5 minutes with back-off.</p>
       <p>A shared store keeps one log for every open session. Nudges are native notifications, scheduled through the desktop app.</p>
-      <p>The ring, speedometer and band are SVG generated in code on the desktop and plain text in the terminal.</p>
+      <p>The dials and the band are SVG generated in code on the desktop, and plain text in the terminal.</p>
       <p>Built test-first: 70 tests on Claude Code's plugin test kit, run against both surfaces.</p>
       <ul class="tags" aria-label="Tech">
         <li>TypeScript</li><li>TSX</li><li>Claude Code mods</li><li>SVG</li><li>REST + OAuth</li><li>TDD</li>
