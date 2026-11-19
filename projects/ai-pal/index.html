@@ -124,7 +124,7 @@ footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
       <p>A band above the prompt keeps the same figures where you type: each window's allowance left, over a speed bar with the rate and the call.</p>
       <figure>
         <img class="wide" src="band.png" width="908" height="92" alt="The band above the prompt: 5-hour 62%, 3h 0m, 18%/h, Use more; Weekly 47%, Sun 01:00, 12%/day, On track">
-        <figcaption>The band above the prompt. Hovering a speed bar gives the reason behind the call.</figcaption>
+        <figcaption>The band above the prompt. Hovering a window gives the reason behind the call.</figcaption>
       </figure>
       <p>When you've stepped away and a window still has enough left, a native notification arrives shortly before its reset. It says how much is left, how old the figure is, and whether coming back is worth it:</p>
       <pre>5-hour: 62% left as of 14:00, resets in 1h. Even nonstop, ~44% would go unused. Try a bigger model.</pre>
@@ -139,7 +139,7 @@ footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
       <p>Usage comes from the session's own figures and from the plan's usage endpoint on api.anthropic.com, polled every 5 minutes with back-off.</p>
       <p>A shared store keeps one log for every open session. Nudges are native notifications, scheduled through the desktop app.</p>
       <p>The dials and the band are SVG generated in code on the desktop, and plain text in the terminal.</p>
-      <p>Built test-first: 70 tests on Claude Code's plugin test kit, run against both surfaces.</p>
+      <p>Built test-first: 84 tests on Claude Code's plugin test kit, run against both surfaces.</p>
       <ul class="tags" aria-label="Tech">
         <li>TypeScript</li><li>TSX</li><li>Claude Code mods</li><li>SVG</li><li>REST + OAuth</li><li>TDD</li>
       </ul>
