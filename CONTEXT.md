@@ -33,3 +33,9 @@ _Avoid_: Customer, lead
 **Recruiter**:
 A hiring manager or recruiter evaluating Humberto for employment, the site's secondary audience.
 _Avoid_: Employer, HR
+
+### Site
+
+**Language**:
+One of the three languages the site is published in: English, German and Brazilian Portuguese. Every page exists in every Language.
+_Avoid_: Locale, translation, version
